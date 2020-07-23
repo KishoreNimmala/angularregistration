@@ -11,16 +11,48 @@
   <script src="js/lib/angular/angular-route.min.js"></script>
   <script src="js/lib/angular/angular-animate.min.js"></script>
 
+
+ 
+  
+
   <script src="js/app.js"></script>
   <script src="js/controllers/registration.js"></script>
   <script src="js/controllers/success.js"></script>
 </head>
 <body>
-<header></header>
+<header>
+	<nav class="cf" ng-include="'views/nav.html'"></nav>
+</header>
 <div class="page" ng-view>
   <main class="cf">
   	{{message}}
   </main>
 </div>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBN7UkFfgs93Qle1qImHzmC5G4EEy1nqdk",
+    authDomain: "angularregistration08-490a7.firebaseapp.com",
+    databaseURL: "https://angularregistration08-490a7.firebaseio.com",
+    projectId: "angularregistration08-490a7",
+    storageBucket: "angularregistration08-490a7.appspot.com",
+    messagingSenderId: "415485163634",
+    appId: "1:415485163634:web:973dc869fbd6bebc826aeb",
+    measurementId: "G-YDBGF3E3P5"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 </body>
 </html>

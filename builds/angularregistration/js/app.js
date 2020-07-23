@@ -1,8 +1,5 @@
-var myApp=angular.module('myApp',['ngRoute']);
+var myApp=angular.module('myApp',['ngRoute','firebase']);
 
-myApp.controller('appController',['$scope',function($scope){
-	$scope.message="Welcome to my App";
-}]);
 
 myApp.config(['$routeProvider',function($routeProvider){
 $routeProvider
