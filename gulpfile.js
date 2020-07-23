@@ -1,32 +1,43 @@
-var gulp = require('gulp'),
-  gutil = require('gulp-util'),
-  webserver = require('gulp-webserver');
+var gulp = require("gulp"),
+  browserSync = require("browser-sync").create(),
+  source = "./builds/angularregistration/",
+  dest = "./builds/angularregistration/";
 
-gulp.task('js', function() {
-  gulp.src('builds/angularregistration/js/**/*');
-});
+function html() {
+  return gulp.src(dest + "**/*.html");
+}
 
-gulp.task('html', function() {
-  gulp.src('builds/angularregistration/*.html');
-});
+function js() {
+  return gulp.src(dest + "**/*.js");
+}
 
-gulp.task('css', function() {
-  gulp.src('builds/angularregistration/css/*.css');
-});
+function styles() {
+  return gulp.src(dest + "**/*.css");
+}
+function views() {
+  return gulp.src(dest + "views/**/*.html");
+}
 
-gulp.task('watch', function() {
-  gulp.watch('builds/angularregistration/js/**/*', ['js']);
-  gulp.watch('builds/angularregistration/css/*.css', ['css']);
-  gulp.watch(['builds/angularregistration/*.html',
-    'builds/angularregistration/views/*.html'], ['html']);
-});
+function watch() {
+  gulp.watch(source + "js/**/*.js", js).on("change", browserSync.reload);
+  gulp.watch(source + "css/**/*.css", styles).on("change", browserSync.reload);
+  gulp.watch(source+"**/*.html", html).on("change", browserSync.reload);
+  gulp.watch(source+"views/**/*.html", views).on("change", browserSync.reload);
+}
+function server() {
+  browserSync.init({
+    notify: false,
+    server: {
+      baseDir: source
+    }
+  });
+  gulp.watch(source + "css/**/*.css", styles).on("change", browserSync.reload);
+  gulp.watch(source + "index.html", html).on("change", browserSync.reload);
+  gulp.watch(source + "index.html", js).on("change", browserSync.reload);
+  gulp.watch(source+"views/**/*.html", views).on("change", browserSync.reload);
+}
+ 
 
-gulp.task('webserver', function() {
-  gulp.src('builds/angularregistration/')
-    .pipe(webserver({
-      livereload: true,
-      open: true
-    }));
-});
+var build = gulp.series(gulp.parallel(js, styles, html), server, watch);
 
-gulp.task('default', ['watch', 'html', 'js', 'css', 'webserver']);
+gulp.task("default", build)

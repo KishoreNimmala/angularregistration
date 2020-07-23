@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\builds",
+    "\\builds\\angularregistration",
+    "\\builds\\angularregistration\\css",
+    "\\builds\\angularregistration\\js",
+    "\\builds\\angularregistration\\js\\lib",
+    "\\builds\\angularregistration\\js\\lib\\angular",
+    "\\builds\\angularregistration\\views"
+  ],
+  "SelectedNode": "\\gulpfile.js",
+  "PreviewInSolutionExplorer": false
+}

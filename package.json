@@ -1,15 +1,25 @@
 {
-  "name": "angularRegistration",
-  "version": "0.0.1",
-  "description": "An application for taking attendance at meetups. Part of my Data Driven Web Applications with Angular.js course at Lynda.com",
+  "name": "angularregistration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/planetoftheweb/angularregistration.git"
+    "url": "git+https://github.com/KishoreNimmala/angularregistration.git"
   },
-  "author": "Ray Villalobos",
+  "author": "Kishore Nimmala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KishoreNimmala/angularregistration/issues"
+  },
+  "homepage": "https://github.com/KishoreNimmala/angularregistration#readme",
   "devDependencies": {
-    "gulp": "^3.8.8",
-    "gulp-util": "^2.2.20",
-    "gulp-webserver": "^0.8.1"
+    "browser-sync": "^2.26.10",
+    "gulp": "^4.0.2",
+    "gulp-connect": "^5.7.0",
+    "gulp-util": "^3.0.8"
   }
 }
