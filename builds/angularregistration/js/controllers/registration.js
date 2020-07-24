@@ -1,18 +1,19 @@
 myApp.controller('RegistrationController',
-	['$scope','$firebase','$firebaseAuth',function($scope,$firebase,$firebaseAuth){
-	var regRef=firebase.database().ref().child('angular');	
-	var auth=$firebaseAuth();	
+	['$scope','Authentication',function($scope,Authentication){
+	/*var ref=firebase.database().ref();
+	var auth=$firebaseAuth();*/
+
 	$scope.login=function(){
-		$scope.message="Welcome "+$scope.user.email;
+		/*$scope.message="Welcome "+$scope.user.email;*/
+		Authentication.login($scope.user);
 	};
 	$scope.register=function(){
-		auth.$createUserWithEmailAndPassword(
-			$scope.user.email,
-			$scope.user.password
-		).then(function(regUser){
-			$scope.message="Hi "+$scope.user.firstname+", Thanks for registering.";
+		Authentication.register($scope.user);
+		/*auth.$createUserWithEmailAndPassword($scope.user.emil,$scope.user.password)
+		.then(function(regUser){
+			$scope.message="Hi "+$scope.user.firstname+", Thanks for registring";
 		}).catch(function(error){
 			$scope.message=error.message;
-		});
+		});*/
 	};
 }]);
