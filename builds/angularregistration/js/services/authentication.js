@@ -1,18 +1,26 @@
-myApp.factory('Authentication',['$rootScope','firebase','$firebaseAuth',function($rootScope,$firebase,$firebaseAuth){
+myApp.factory('Authentication',['$rootScope','$location','$firebaseAuth',function($rootScope,$location,$firebaseAuth){
 	var ref=firebase.database().ref();
 	var auth=$firebaseAuth();
 	return{
 		login: function(user){
-			$rootScope.message="Welcome "+$rootScope.user.email;
-		},
+			/*$rootScope.message="Welcome "+$rootScope.user.email;*/
+			auth.$signInWithEmailAndPassword(
+				user.email,
+				user.password	
+			).then(function(user){
+				$location.path('/success');
+			}).catch(function(error){
+				$rootScope.message=error.message;
+			});//signInWitEmailAndPassword
+		},//login
 		register: function(user){
-			anut.$createUserWithEmailAndPassword(
+			auth.$createUserWithEmailAndPassword(
 			user.email,user.password	
 			).then(function(regUser){
 				$rootScope.message="Hi "+user.firstname+", Thanks for registering";
 			}).catch(function(error){
 				$rootScope.message=error.message;
-			})
-		}	
-	};
+			});//createUserWithEmailAndPassword
+		}//register	
+	};//return
 }]);
