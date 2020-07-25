@@ -4,8 +4,12 @@ myApp.controller('RegistrationController',
 	var auth=$firebaseAuth();*/
 
 	$scope.login=function(){
+
 		/*$scope.message="Welcome "+$scope.user.email;*/
 		Authentication.login($scope.user);
+	};
+	$scope.logout=function(){
+		Authentication.logout();
 	};
 	$scope.register=function(){
 		Authentication.register($scope.user);
